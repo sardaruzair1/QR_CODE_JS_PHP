@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>QR Code Example</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+</head>
+<body>
+	<!-- Create a container for the QR code -->
+	<div id="qrcode"></div>
+
+	<!-- JavaScript to generate the QR code and redirect to a URL when scanned -->
+	<script>
+		// Set the URL to redirect to
+		var url = "https://www.github.com/sardaruzair1";
+
+		// Generate the QR code
+		var qr = qrcode(0, 'M');
+		qr.addData(url);
+		qr.make();
+		
+		// Create an image element and set its source to the QR code image
+		var img = document.createElement('img');
+		img.src = qr.createDataURL();
+
+		// Append the image to the container div
+		document.getElementById('qrcode').appendChild(img);
+
+		// Listen for a click event on the QR code image
+		img.addEventListener('click', function() {
+			// Redirect to the URL when the QR code is clicked
+			window.location.href = url;
+		});
+	</script>
+</body>
+</html>
